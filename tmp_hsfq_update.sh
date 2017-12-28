@@ -22,14 +22,12 @@ if [ -x "/jffs/configs/dnsmasq.d/hsfq_update.sh" ]; then
 	[ -f /tmp/tmp_fq_up ] && rm -f /tmp/tmp_fq_up
 	[ -f /tmp/tmp_hs_up ] && rm -f /tmp/tmp_hs_up
 	# 准备翻墙 FQ 文件
-	wget --no-check-certificate -t 10 -T 30 https://github.com/wz161996/6300v2/blob/master/tmp_fq_up -qO \
-	/tmp/tmp_fq_up && chmod 755 /tmp/tmp_fq_up && . /tmp/tmp_fq_up
+	wget --no-check-certificate -t 10 -T 30 https://github.com/wz161996/6300v2/blob/master/tmp_fq_up -qO /tmp/tmp_fq_up && chmod 755 /tmp/tmp_fq_up && . /tmp/tmp_fq_up
 	sleep 2
 fi
 if [ -x "/jffs/configs/dnsmasq.d/hsfq_update.sh" ]; then
 	# 准备去广告 HOSTS 文件
-	wget --no-check-certificate -t 10 -T 30 https://github.com/wz161996/6300v2/blob/master/tmp_hs_up -qO \
-	/tmp/tmp_hs_up && chmod 755 /tmp/tmp_hs_up && . /tmp/tmp_hs_up
+	wget --no-check-certificate -t 10 -T 30 https://github.com/wz161996/6300v2/blob/master/tmp_hs_up -qO /tmp/tmp_hs_up && chmod 755 /tmp/tmp_hs_up && . /tmp/tmp_hs_up
 	restart_dhcpd && /usr/sbin/dnsmasq restart 2>&1 >/dev/null
 fi
 sleep 3 && exit 0
