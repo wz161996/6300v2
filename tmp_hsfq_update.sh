@@ -32,3 +32,4 @@ if [ -x "/jffs/configs/dnsmasq.d/hsfq_update.sh" ]; then
 	restart_dhcpd && /usr/sbin/dnsmasq restart 2>&1 >/dev/null
 fi
 sleep 3 && exit 0
+
