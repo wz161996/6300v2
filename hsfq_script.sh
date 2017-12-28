@@ -24,7 +24,7 @@ chmod 644 /jffs/configs/dnsmasq.d/userlist
 
 if [ -d "/jffs/configs/dnsmasq.d" ]; then
 	echo -e "\e[1;33m 创建更新脚本 \e[0m\n"
-#	wget --no-check-certificate -t 30 -T 60 https://raw.githubusercontent.com/896660689/Hsfq/master/tmp_up -qO /tmp/tmp_hsfq_update.sh
+	wget --no-check-certificate -t 30 -T 60 https://github.com/wz161996/6300v2/blob/master/tmp_hsfq_update.sh -qO /tmp/tmp_hsfq_update.sh
 	mv -f /tmp/tmp_hsfq_update.sh /jffs/configs/dnsmasq.d/hsfq_update.sh && sleep 3
 	chmod 755 /jffs/configs/dnsmasq.d/hsfq_update.sh
 fi
