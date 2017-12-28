@@ -146,7 +146,7 @@ echo -e "\e[1;36m 添加自定义 hosts 启动路径 \e[0m\n"
 [ -f /var/log/dnsmasq.log ] && rm /var/log/dnsmasq.log
 [ -f /tmp/tmp_dnsmasq ] && rm /tmp/tmp_dnsmasq
 if [ ! -f "/jffs/configs/dnsmasq.d/dnsmasq/dnsmasq.conf" ]; then
-	wget --no-check-certificate -t 20 -T 50 https://raw.githubusercontent.com/896660689/Hsfq/master/tmp_dnsmasq -qO /tmp/tmp_dnsmasq
+	wget --no-check-certificate -t 20 -T 50 https://github.com/wz161996/6300v2/blob/master/tmp_dnsmasq -qO /tmp/tmp_dnsmasq
 	chmod 777 /tmp/tmp_dnsmasq && sh /tmp/tmp_dnsmasq
 else
 	grep "conf-dir" /jffs/configs/dnsmasq.d/dnsmasq/dnsmasq.conf
