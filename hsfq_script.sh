@@ -4,19 +4,20 @@ route_vlan=`/sbin/ifconfig br0 |grep "inet addr"| cut -f 2 -d ":"|cut -f 1 -d " 
 username=`nvram get http_username`
 
 
-echo -e -n "\033[41;37m å¼€å§‹æ„å»ºç¿»å¢™å¹³å°......\033[0m\n"
+
+echo -e -n "\033[41;37m ¿ªÊ¼¹¹½¨·­Ç½Æ½Ì¨......\033[0m\n"
 sleep 3
 if [ ! -d "/jffs/configs/dnsmasq.d" ]; then
 	mkdir -p -m 755 /jffs/configs/dnsmasq.d
-	echo -e "\e[1;36m åˆ›å»º dnsmasq è§„åˆ™è„šæœ¬æ–‡ä»¶å¤¹ \e[0m\n"
+	echo -e "\e[1;36m ´´½¨ dnsmasq ¹æÔò½Å±¾ÎÄ¼ş¼Ğ \e[0m\n"
 	cp -f /tmp/hsfq_script.sh /jffs/configs/dnsmasq.d/hsfq_script.sh
 	cp -f /etc/resolv.conf /jffs/configs/dnsmasq.d/resolv_bak
 fi
 
 if [ ! -f "/jffs/configs/dnsmasq.d/userlist" ]; then
-	echo -e "\e[1;36m åˆ›å»ºè‡ªå®šä¹‰ç¿»å¢™è§„åˆ™ \e[0m\n"
+	echo -e "\e[1;36m ´´½¨×Ô¶¨Òå·­Ç½¹æÔò \e[0m\n"
 	cat > "/jffs/configs/dnsmasq.d/userlist" <<EOF
-# å›½å†…dnsä¼˜åŒ–
+# ¹úÄÚdnsÓÅ»¯
 address=/email.163.com/223.6.6.6
 #address=/mail.qq.com/114.114.114.114
 EOF
@@ -24,18 +25,18 @@ fi
 chmod 644 /jffs/configs/dnsmasq.d/userlist
 
 if [ -d "/jffs/configs/dnsmasq.d" ]; then
-	echo -e "\e[1;33m åˆ›å»ºæ›´æ–°è„šæœ¬ \e[0m\n"
+	echo -e "\e[1;33m ´´½¨¸üĞÂ½Å±¾ \e[0m\n"
 	wget --no-check-certificate -t 30 -T 60 https://github.com/wz161996/6300v2/blob/master/tmp_hsfq_update.sh -qO /tmp/tmp_hsfq_update.sh
 	mv -f /tmp/tmp_hsfq_update.sh /jffs/configs/dnsmasq.d/hsfq_update.sh && sleep 3
 	chmod 755 /jffs/configs/dnsmasq.d/hsfq_update.sh
 fi
 
-echo -e "\e[1;36m åˆ›å»º DNS é…ç½®æ–‡ä»¶ \e[0m\n"
+echo -e "\e[1;36m ´´½¨ DNS ÅäÖÃÎÄ¼ş \e[0m\n"
 if [ ! -f "/jffs/configs/dnsmasq.d/resolv.conf" ]; then
 	cat > /jffs/configs/dnsmasq.d/resolv.conf <<EOF
-## DNSè§£ææœåŠ¡å™¨è®¾ç½®
+## DNS½âÎö·şÎñÆ÷ÉèÖÃ
 nameserver 127.0.0.1
-## æ ¹æ®ç½‘ç»œç¯å¢ƒé€‰æ‹©DNS.æœ€å¤š6ä¸ªåœ°å€æŒ‰é€Ÿæ’åº
+## ¸ù¾İÍøÂç»·¾³Ñ¡ÔñDNS.×î¶à6¸öµØÖ·°´ËÙÅÅĞò
 nameserver 223.6.6.6
 nameserver 176.103.130.131
 nameserver 114.114.114.114
@@ -48,22 +49,22 @@ cp -f /jffs/configs/dnsmasq.d/resolv.conf /tmp/resolv.conf
 sed -i "/#/d" /tmp/resolv.conf;mv -f /tmp/resolv.conf /etc/resolv.conf
 
 if [ ! -d "/jffs/configs/dnsmasq.d/conf" ]; then
-	echo -e "\e[1;36m åˆ›å»º 'FQ' æ–‡ä»¶ \e[0m\n"
+	echo -e "\e[1;36m ´´½¨ 'FQ' ÎÄ¼ş \e[0m\n"
 	mkdir -p /jffs/configs/dnsmasq.d/conf
 	echo "address=/localhost/127.0.0.1" > /jffs/configs/dnsmasq.d/conf/hosts_fq.conf && chmod 644 /jffs/configs/dnsmasq.d/conf/hosts_fq.conf
 fi
 
 if [ ! -d "/jffs/configs/dnsmasq.d/hosts" ]; then
-	echo -e "\e[1;36m åˆ›å»º 'HOSTS' æ–‡ä»¶ \e[0m\n"
+	echo -e "\e[1;36m ´´½¨ 'HOSTS' ÎÄ¼ş \e[0m\n"
 	mkdir -p /jffs/configs/dnsmasq.d/hosts
 	echo "127.0.0.1 localhost" > /jffs/configs/dnsmasq.d/hosts/hosts_ad.conf && chmod 644 /jffs/configs/dnsmasq.d/hosts/hosts_ad.conf
 fi
 
-echo -e "\e[1;36m åˆ›å»ºè‡ªå®šä¹‰å¹¿å‘Šé»‘åå• \e[0m\n"
+echo -e "\e[1;36m ´´½¨×Ô¶¨Òå¹ã¸æºÚÃûµ¥ \e[0m\n"
 if [ ! -f "/jffs/configs/dnsmasq.d/blacklist" ]; then
 	cat > "/jffs/configs/dnsmasq.d/blacklist" <<EOF
-# è¯·åœ¨ä¸‹é¢æ·»åŠ å¹¿å‘Šé»‘åå•
-# æ¯è¡Œè¾“å…¥è¦å±è”½å¹¿å‘Šç½‘å€ä¸å«http://ç¬¦å·
+# ÇëÔÚÏÂÃæÌí¼Ó¹ã¸æºÚÃûµ¥
+# Ã¿ĞĞÊäÈëÒªÆÁ±Î¹ã¸æÍøÖ·²»º¬http://·ûºÅ
 active.admore.com.cn
 g.163.com
 mtty-cdn.mtty.com
@@ -81,7 +82,7 @@ cnzz.com
 statis.api.3g.youku.com
 ad.m.qunar.com
 lives.l.aiseet.atianqi.com
-# è¿è¥å•†ipåŠ«æŒ
+# ÔËÓªÉÌip½Ù³Ö
 120.197.89.239
 211.139.178.49
 221.179.46.190
@@ -90,7 +91,7 @@ lives.l.aiseet.atianqi.com
 60.19.29.21
 60.19.29.24
 61.174.50.168
-# å¹¿å‘ŠIPåŠ«æŒ
+# ¹ã¸æIP½Ù³Ö
 47.89.59.182
 106.75.65.90
 114.55.123.44
@@ -105,11 +106,11 @@ EOF
 fi
 chmod 644 /jffs/configs/dnsmasq.d/blacklist
 
-echo -e "\e[1;36m åˆ›å»ºè‡ªå®šä¹‰å¹¿å‘Šç™½åå• \e[0m\n"
+echo -e "\e[1;36m ´´½¨×Ô¶¨Òå¹ã¸æ°×Ãûµ¥ \e[0m\n"
 if [ ! -f "/jffs/configs/dnsmasq.d/whitelist" ]; then
 	cat > "/jffs/configs/dnsmasq.d/whitelist" <<EOF
-# è¯·å°†è¯¯æ€çš„ç½‘å€æ·»åŠ åˆ°åœ¨ä¸‹é¢ç™½åå•
-# æ¯è¡Œè¾“å…¥ç›¸åº”å‡†ç¡®çš„ç½‘å€æˆ–å…³é”®è¯å³å¯:
+# Çë½«ÎóÉ±µÄÍøÖ·Ìí¼Óµ½ÔÚÏÂÃæ°×Ãûµ¥
+# Ã¿ĞĞÊäÈëÏàÓ¦×¼È·µÄÍøÖ·»ò¹Ø¼ü´Ê¼´¿É:
 m.baidu.com
 github.com
 raw.githubusercontent.com
@@ -137,13 +138,13 @@ fi
 chmod 644 /jffs/configs/dnsmasq.d/whitelist
 
 if [ -f "/jffs/configs/dnsmasq.d/cron/crontabs/$username" ]; then
-	echo -e "\e[1;33m æ·»åŠ å®šæ—¶è®¡åˆ’æ›´æ–°ä»»åŠ¡ \e[0m\n"
+	echo -e "\e[1;33m Ìí¼Ó¶¨Ê±¼Æ»®¸üĞÂÈÎÎñ \e[0m\n"
 	sed -i '/hsfq_update.sh/d' /jffs/configs/dnsmasq.d/cron/crontabs/$username
 	sed -i '$a 30 5 * * * sh /jffs/configs/dnsmasq.d/hsfq_update.sh &' /jffs/configs/dnsmasq.d/cron/crontabs/$username
 	sleep 2 && killall crond;/usr/sbin/crond
 fi
 
-echo -e "\e[1;36m æ·»åŠ è‡ªå®šä¹‰ hosts å¯åŠ¨è·¯å¾„ \e[0m\n"
+echo -e "\e[1;36m Ìí¼Ó×Ô¶¨Òå hosts Æô¶¯Â·¾¶ \e[0m\n"
 [ -f /var/log/dnsmasq.log ] && rm /var/log/dnsmasq.log
 [ -f /tmp/tmp_dnsmasq ] && rm /tmp/tmp_dnsmasq
 if [ ! -f "/jffs/configs/dnsmasq.d/dnsmasq/dnsmasq.conf" ]; then
@@ -157,17 +158,17 @@ else
 		sed -i '/1800/d' /jffs/configs/dnsmasq.d/dnsmasq/dnsmasq.conf
 		sed -i '/conf-dir/d' /jffs/configs/dnsmasq.d/dnsmasq/dnsmasq.conf
 	else
-		echo -e "\033[41;37m å¼€å§‹å†™å…¥å¯åŠ¨ä»£ç  \e[0m\n"
+		echo -e "\033[41;37m ¿ªÊ¼Ğ´ÈëÆô¶¯´úÂë \e[0m\n"
 		echo "listen-address=${route_vlan},127.0.0.1
-# æ·»åŠ ç›‘å¬åœ°å€
-# å¼€å¯æ—¥å¿—é€‰é¡¹
+# Ìí¼Ó¼àÌıµØÖ·
+# ¿ªÆôÈÕÖ¾Ñ¡Ïî
 log-queries
 log-facility=/var/log/dnsmasq.log
-# å¼‚æ­¥log,ç¼“è§£é˜»å¡ï¼Œæé«˜æ€§èƒ½ã€‚é»˜è®¤ä¸º5ï¼Œæœ€å¤§ä¸º100
+# Òì²½log,»º½â×èÈû£¬Ìá¸ßĞÔÄÜ¡£Ä¬ÈÏÎª5£¬×î´óÎª100
 log-async=50
-# ç¼“å­˜æœ€é•¿æ—¶é—´
+# »º´æ×î³¤Ê±¼ä
 #min-cache-ttl=1800
-# æŒ‡å®šæœåŠ¡å™¨'åŸŸå''åœ°å€'æ–‡ä»¶å¤¹
+# Ö¸¶¨·şÎñÆ÷'ÓòÃû''µØÖ·'ÎÄ¼ş¼Ğ
 conf-dir=/jffs/configs/dnsmasq.d/conf
 # conf-file=/jffs/configs/dnsmasq.d/conf/hosts_fq.conf" >> /tmp/tmp_dnsmasq.conf
 		cat /tmp/tmp_dnsmasq.conf | sed -E -e "/#/d" >> /jffs/configs/dnsmasq.d/dnsmasq/dnsmasq.conf;sleep 3
@@ -176,7 +177,7 @@ conf-dir=/jffs/configs/dnsmasq.d/conf
 fi
 
 if [ -f "/jffs/configs/dnsmasq.d/post_iptables_script.sh" ]; then
-	echo -e "\e[1;36m æ·»åŠ é˜²ç«å¢™ç«¯å£è½¬å‘è§„åˆ™ \e[0m\n"
+	echo -e "\e[1;36m Ìí¼Ó·À»ğÇ½¶Ë¿Ú×ª·¢¹æÔò \e[0m\n"
 	sed -i '/DNAT/d' /jffs/configs/dnsmasq.d/post_iptables_script.sh
 	sed -i '/iptables-save/d' /jffs/configs/dnsmasq.d/post_iptables_script.sh
 	sed -i '$a /bin/iptables-save' /jffs/configs/dnsmasq.d/post_iptables_script.sh
@@ -192,7 +193,7 @@ if [ -f "/jffs/configs/dnsmasq.d/post_iptables_script.sh" ]; then
 fi
 
 if [ -f "/jffs/configs/dnsmasq.d/hsfq_update.sh" ]; then
-	echo -e -n "\033[41;37m å¼€å§‹ä¸‹è½½ç¿»å¢™è„šæœ¬æ–‡ä»¶......\033[0m\n"
+	echo -e -n "\033[41;37m ¿ªÊ¼ÏÂÔØ·­Ç½½Å±¾ÎÄ¼ş......\033[0m\n"
 	sh /jffs/configs/dnsmasq.d/hsfq_update.sh
 fi
 
