@@ -2,17 +2,18 @@
 # Compile:by-lanse	2017-08-30
 route_vlan=`/sbin/ifconfig br0 |grep "inet addr"| cut -f 2 -d ":"|cut -f 1 -d " " `
 username=`nvram get http_username`
-
 echo -e -n "\033[41;37m......\033[0m\n"
 sleep 3
-if [ ! -d "/jffs/configs/dnsmasq.d" ]; then
+if [ ! -d "/jffs/configs/dnsmasq.d" ]; 
+then
 	mkdir -p -m 755 /jffs/configs/dnsmasq.d
 	echo -e "\e[1;36m 创建 dnsmasq 规则脚本文件夹 \e[0m\n"
 	cp -f /tmp/hsfq_script.sh /jffs/configs/dnsmasq.d/hsfq_script.sh
 	cp -f /etc/resolv.conf /jffs/configs/dnsmasq.d/resolv_bak
 fi
 
-if [ ! -f "/jffs/configs/dnsmasq.d/userlist" ]; then
+if [ ! -f "/jffs/configs/dnsmasq.d/userlist" ]; 
+then
 	echo -e "\e[1;36m 创建自定义翻墙规则 \e[0m\n"
 	cat > "/jffs/configs/dnsmasq.d/userlist" <<EOF
 # 国内dns优化
@@ -31,7 +32,8 @@ fi
 
 echo -e "\e[1;36m 创建 DNS 配置文件 \e[0m\n"
 if [ ! -f "/jffs/configs/dnsmasq.d/resolv.conf" ]; then
-	cat > /jffs/configs/dnsmasq.d/resolv.conf <<EOF
+	cat > /jffs/configs/dnsmasq.d/resolv.conf 
+<<EOF
 ## DNS解析服务器设置
 nameserver 127.0.0.1
 ## 根据网络环境选择DNS.最多6个地址按速排序
