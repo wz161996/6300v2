@@ -19,6 +19,7 @@ wget --no-check-certificate -t 30 -T 80 https://github.com/wz161996/6300v2/blob/
 wget --no-check-certificate -t 30 -T 80 https://github.com/wz161996/6300v2/blob/master/abd.conf -qO \
 /tmp/abd.conf && sleep 2 && chmod +x /tmp/abd.conf && . /tmp/abd.conf
 
+
 sleep 2
 echo -e "\e[1;36m 导入自定义规则 \e[0m\n"
 cp /jffs/configs/dnsmasq.d/blacklist /tmp/blacklist

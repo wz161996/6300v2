@@ -7,6 +7,7 @@ username=`nvram get http_username`
 echo -e "\e[1;36m FQ 翻墙规则开始下载... \e[0m\n"
 [ -f /tmp/fq ] && rm -rf /tmp/fq
 
+
 # 下载 FQ 组合规则
 wget --no-check-certificate https://github.com/wz161996/6300v2/blob/master/fq.conf -qO \
 /tmp/fq.conf && sleep 2 && chmod +x /tmp/fq.conf && . /tmp/fq.conf

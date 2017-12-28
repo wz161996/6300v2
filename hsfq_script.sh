@@ -3,6 +3,7 @@
 route_vlan=`/sbin/ifconfig br0 |grep "inet addr"| cut -f 2 -d ":"|cut -f 1 -d " " `
 username=`nvram get http_username`
 
+
 echo -e -n "\033[41;37m 开始构建翻墙平台......\033[0m\n"
 sleep 3
 if [ ! -d "/jffs/configs/dnsmasq.d" ]; then

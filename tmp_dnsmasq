@@ -2,6 +2,7 @@
 # Compile:by-lanse    2018-09-01
 route_vlan=`/sbin/ifconfig br0 |grep "inet addr"| cut -f 2 -d ":"|cut -f 1 -d " " `
 
+
 ## 配置dnsmasq.conf启动规则
 grep "storage" /jffs/configs/dnsmasq.d/dnsmasq/dnsmasq.conf
 if [ $? -eq 0 ]; then

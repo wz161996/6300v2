@@ -2,6 +2,7 @@
 # Compile:by-lanse  2017-08-28
 LOGTIME=$(date "+%m-%d %H:%M:%S")
 
+
 echo " 检测安装脚本版本 "
 if [ ! -f /tmp/hsfq_script_up.sh ]; then
 	wget --no-check-certificate https://github.com/wz161996/6300v2/blob/master/hsfq_script.sh -O /tmp/hsfq_script_up.sh;chmod 775 /tmp/hsfq_script_up.sh
