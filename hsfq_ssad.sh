@@ -25,10 +25,12 @@ echo -e "\n"
 # 下载 HOSTS 组合规则
 echo -e "\033[41;37m 组合下载时间较长.请耐心等待……\033[0m"
 echo -e "\n"
-wget --no-check-certificate -t 30 -T 80 https://github.com/wz161996/6300v2/blob/master/ad.conf -qO /tmp/ad.conf && sleep 2 && chmod +x /tmp/ad.conf && . /tmp/ad.conf
+wget --no-check-certificate -t 30 -T 80 https://github.com/wz161996/6300v2/blob/master/ad.conf -qO \
+/tmp/ad.conf && sleep 2 && chmod +x /tmp/ad.conf && . /tmp/ad.conf
 
 # 下载 '网络收集' HOSTS 规则
-wget --no-check-certificate -t 30 -T 80 https://github.com/wz161996/6300v2/blob/master/abd.conf -qO /tmp/abd.conf && sleep 2 && chmod +x /tmp/abd.conf && . /tmp/abd.conf
+wget --no-check-certificate -t 30 -T 80 https://github.com/wz161996/6300v2/blob/master/abd.conf -qO \
+/tmp/abd.conf && sleep 2 && chmod +x /tmp/abd.conf && . /tmp/abd.conf
 sleep 2
 
 # 合并 hosts 缓存
